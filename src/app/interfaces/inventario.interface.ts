@@ -7,5 +7,4 @@ export interface inventario{
 export interface producto{
     nombre: string,
     logotipo: string
-    cantidadp: number
 }

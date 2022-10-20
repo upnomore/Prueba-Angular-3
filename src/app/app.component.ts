@@ -23,7 +23,7 @@ export class AppComponent {
   objinv: inventario = {
     id: 0,
     cantidad: 0,
-    producto: {nombre:"", logotipo:"", cantidadp:0}
+    producto: {nombre:"", logotipo:""}
   }
 
   // funcion de agregar
@@ -31,7 +31,7 @@ export class AppComponent {
     let agregar: inventario = {
       id: this.i++,
       cantidad: 1,
-      producto: {nombre:"Papas Margarita", logotipo:"", cantidadp:0}
+      producto: {nombre:"", logotipo:""}
     } 
     this.objinv = agregar;
     this.inventario.push(this.objinv)
@@ -42,9 +42,6 @@ export class AppComponent {
   almacenar() {
     localStorage.setItem(`${this.objinv.id}`, JSON.stringify(this.inventario))
   }
-
-  
-
 
   
 }

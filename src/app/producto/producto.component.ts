@@ -8,16 +8,21 @@ import { inventario, producto } from '../interfaces/inventario.interface';
 })
 export class ProductoComponent {
 
+  valor:number = 1;
   constructor(private inventarioService: InventarioService) {}
 
   get inventario(){
     return this.inventarioService.objinv;
   }
 
-  base:number = 1;
+  
+  objinv: inventario["producto"] = {
+    nombre: "", 
+    logotipo:"", 
+  }
 
-  acumular(valor:number){
-    this.base += valor
+  acumular(){
+    this.valor += this.valor
   }
 
 }

@@ -11,13 +11,23 @@ export class InventarioService {
     {
       id: 1,
       cantidad: 1,
-      producto: {nombre: "Papas Margarita", logotipo: "", cantidadp:0 }
+      producto: {nombre: "Papas Margarita", logotipo: "./assets/papas_margaritas.png" }
     },
     {
       id: 2,
       cantidad: 1,
-      producto: {nombre: "Gaseosa Pepsi", logotipo: "", cantidadp:0}
+      producto: {nombre: "Gaseosa Pepsi", logotipo: "./assets/gaseosa_pepsi.png"}
     },
+    {
+      id: 3,
+      cantidad: 1,
+      producto: {nombre: "Galletas Oreo", logotipo: "./assets/galletas_oreo.png"}
+    },
+    {
+      id: 4,
+      cantidad: 1,
+      producto: {nombre: "Pony Malta", logotipo:"./assets/pony_malta.png"}
+    }
 ];
 
 get inventario(){

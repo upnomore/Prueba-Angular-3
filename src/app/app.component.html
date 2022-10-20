@@ -1,11 +1,22 @@
+<div class="container">
+  <select class="form-select my-5" aria-label="Default select example">
+    <option selected *ngFor="let inventario of inventario">Inventario {{inventario.id}}</option>
+  </select>
+  <div class="row">
+    <div class="col-6">
+      <app-producto></app-producto>
+    </div>  
+    <div class="col-6">
+      <h2>imagenes de productos</h2>
+      <app-img></app-img>
+    </div>
+  </div>
 
-<select>
-  <option selected *ngFor="let inventario of inventario">Inventario {{inventario.id}}</option>
-</select> 
-
-<app-producto></app-producto>
-
-<button type="button" (click)="agregarinv()">Nuevo Inventario</button>
+  <div class="row">
+    <div class="col-3  offset-9  d-grid gap-2" >
+      <button type="button" class="btn btn-warning" (click)="agregarinv()">Nuevo Inventario</button>
+    </div>
+  </div>
 
 
-
+</div>
