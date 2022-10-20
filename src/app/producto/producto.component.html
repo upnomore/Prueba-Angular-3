@@ -1,0 +1,19 @@
+<table class="table container">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let inv of inventario;">
+            <td>{{inv.producto.nombre}}
+                <td>
+                    <button (click)="acumular(-base)"> -{{base}}</button>
+                    <span>  {{inv.cantidad}}  </span>
+                    <button (click)="acumular(base  )"> +{{base}}</button>
+            </td>
+            </td>
+        </tr>
+</tbody>
+</table>
