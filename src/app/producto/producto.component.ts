@@ -9,6 +9,7 @@ import { inventario, producto } from '../interfaces/inventario.interface';
 export class ProductoComponent {
 
   valor:number = 1;
+  i:number = 1
   constructor(private inventarioService: InventarioService) {}
 
   get inventario(){
@@ -22,7 +23,11 @@ export class ProductoComponent {
   }
 
   acumular(){
-    this.valor += this.valor
+    this.valor += this.i
+  }
+
+  restar(){
+    this.valor -= this.i
   }
 
 }

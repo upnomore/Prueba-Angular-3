@@ -6,12 +6,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let inv of inventario">
+        <tr *ngFor="let inv of inventario; let i">
             <td>{{inv.producto.nombre}}</td>
                 <td>
-                    <button (click)="acumular()"> -{{valor}}</button>
+                    <button (click)="restar()"> -1 </button>
                     <span>  {{valor}}  </span>
-                    <button (click)="acumular()"> + {{valor}}</button>
+                    <button (click)="acumular()"> +1 </button>
             </td>
         </tr>
 </tbody>
