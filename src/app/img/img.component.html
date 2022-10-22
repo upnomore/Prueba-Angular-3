@@ -1,9 +1,9 @@
 <div>
     <div class="container">
         <div class="row">
-            <div class="col-4" *ngFor="let inventario of inventarios">
+            <div class="col-4" *ngFor="let inventario of inventarioservice.inventario[inventarioservice.idSeleccionado].productos">
                 <img src="{{inventario.producto.logotipo}}" class="card-img-top" style="width: 150px; height:210px;">
-                <h2>X</h2>
+                <h2>X{{inventario.cantidad}}</h2>
             </div>
         </div>
     </div>

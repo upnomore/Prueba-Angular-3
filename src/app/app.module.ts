@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { InventarioService } from './service/inventario.service';
 import { ProductoComponent } from './producto/producto.component';
 import { ImgComponent } from './img/img.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ImgComponent } from './img/img.component';
     ImgComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   exports: [
     

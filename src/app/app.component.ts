@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { inventario } from './interfaces/inventario.interface';
+import { ProductoComponent } from './producto/producto.component';
 import { InventarioService } from './service/inventario.service';
 
 @Component({
@@ -9,40 +11,29 @@ import { InventarioService } from './service/inventario.service';
 })
 export class AppComponent {
   title = 'inventario';
-  
-  // Llamar servicio
-  get inventario(){
-    return this.inventarioService.objinv
-}
+  myForm: FormGroup
 
-  constructor(private inventarioService: InventarioService) {}
+  constructor(public inventarioService: InventarioService) {
+    this.myForm = new FormGroup({
+      inventario: new FormControl(""),
+    })
+    this.myForm.controls["inventario"].valueChanges.subscribe((event)=> {
+      this.inventarioService.seleccionarId(event)
+    });
+    this.agregarinv()
+   }
 
-  //contador
-  i:number = 3
-
-  objinv: inventario = {
-    id: 0,
-    cantidad: 0,
-    producto: {nombre:"", logotipo:""}
-  }
-
-  // funcion de agregar
-  agregarinv(){
-    let agregar: inventario = {
-      id: this.i++,
-      cantidad: 1,
-      producto: {nombre:"", logotipo:""}
-    } 
-    this.objinv = agregar;
-    this.inventario.push(this.objinv)
+   agregarinv(){
+    const idnuevo = this.inventarioService.crearInventario();
+    this.myForm.controls['inventario'].setValue(idnuevo)
     this.almacenar()
-  }
+   }
+  
 
   //localstorage
   almacenar() {
-    localStorage.setItem(`${this.objinv.id}`, JSON.stringify(this.inventario))
+    localStorage.setItem(`${this.inventarioService.idSeleccionado}`, JSON.stringify(this.inventarioService.Inventario))
   }
 
-  
 }
 

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { InventarioService } from '../service/inventario.service';
-import { inventario, producto } from '../interfaces/inventario.interface';
+import { inventario, Producto, IProductoInventario } from '../interfaces/inventario.interface';
+import { ImgComponent } from '../img/img.component';
 
 @Component({
   selector: 'app-producto',
@@ -8,26 +9,47 @@ import { inventario, producto } from '../interfaces/inventario.interface';
 })
 export class ProductoComponent {
 
-  valor:number = 1;
-  i:number = 1
-  constructor(private inventarioService: InventarioService) {}
 
-  get inventario(){
+  constructor(public inventarioService: InventarioService) {}
+
+  Inventarios: inventario[] = []
+  nu: inventario[] = []
+  valor: number = 1
+  i: number = 1
+
+  acumular(indiceProducto: number, esSuma: boolean){
+    if (this.inventarioService.Inventario[this.inventarioService.idSeleccionado].productos[indiceProducto].cantidad == 0 && esSuma == false){
+      return
+    }
+    this.inventarioService.Inventario[this.inventarioService.idSeleccionado].productos[indiceProducto].cantidad += (esSuma) ? 1 : -1
+  }
+
+  // Forma 2 contador
+ /* get inventario(){
     return this.inventarioService.objinv;
   }
 
   
-  objinv: inventario["producto"] = {
-    nombre: "", 
-    logotipo:"", 
+  objinv: inventario = {
+    id: 0,
+    cantidad: 0,
+    productos: [
+      {
+        producto: {
+          nombre: "", 
+          logotipo:""
+        }, 
+        cantidad: 0
+      }
+    ],
   }
 
-  acumular(){
-    this.valor += this.i
+  acumular(valor:number, iprod:IProductoInventario){
+    if (iprod.cantidad == 0 && valor == -1){
+      return ;
+    }
+    iprod.cantidad += valor
   }
 
-  restar(){
-    this.valor -= this.i
-  }
-
+*/
 }

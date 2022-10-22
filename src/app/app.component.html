@@ -1,13 +1,14 @@
 <div class="container">
-  <select class="form-select my-5" aria-label="Default select example">
-    <option selected *ngFor="let inventario of inventario">Inventario {{inventario.id}}</option>
+  <form [formGroup]="myForm" class="mb-3">
+  <select class="form-select my-5" aria-label="Default select example" formControlName="inventario">
+    <option selected *ngFor="let inventario of inventarioService.inventario; let i = index" [value]="i">Inventario {{i}}</option>
   </select>
+</form>
   <div class="row">
     <div class="col-6">
       <app-producto></app-producto>
     </div>  
     <div class="col-6">
-      <h2>imagenes de productos</h2>
       <app-img></app-img>
     </div>
   </div>

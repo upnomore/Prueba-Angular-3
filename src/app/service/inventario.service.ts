@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { inventario } from '../interfaces/inventario.interface';
+import { ProductoService } from './producto.service';
 
 
 @Injectable({
@@ -7,32 +8,25 @@ import { inventario } from '../interfaces/inventario.interface';
 })
 export class InventarioService {
 
-  public objinv: inventario[] = [
-    {
-      id: 1,
-      cantidad: 1,
-      producto: {nombre: "Papas Margarita", logotipo: "./assets/papas_margaritas.png" }
-    },
-    {
-      id: 2,
-      cantidad: 1,
-      producto: {nombre: "Gaseosa Pepsi", logotipo: "./assets/gaseosa_pepsi.png"}
-    },
-    {
-      id: 3,
-      cantidad: 1,
-      producto: {nombre: "Galletas Oreo", logotipo: "./assets/galletas_oreo.png"}
-    },
-    {
-      id: 4,
-      cantidad: 1,
-      producto: {nombre: "Pony Malta", logotipo:"./assets/pony_malta.png"}
-    }
-];
+  Inventario: inventario[] = []
+  idSeleccionado: number = 0
 
-get inventario(){
-    return [...this.objinv]
-}
+  constructor(private productoService: ProductoService) { }
 
-  constructor() { }
+  get inventario(): inventario[] {
+    return [...this.Inventario]
+  }
+
+  crearInventario(): number {
+    let idNuevo = this.inventario.length;
+    this.Inventario.push({
+      id: this.Inventario.length,
+      productos: this.productoService.inventario.map(p => ({producto: p, cantidad: 0}))
+    });
+    return idNuevo
+  }
+
+  seleccionarId(id:number) {
+    this.idSeleccionado = id
+  }
 }

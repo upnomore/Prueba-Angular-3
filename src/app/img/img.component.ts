@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { InventarioService } from '../service/inventario.service';
 import { inventario } from '../interfaces/inventario.interface';
+import { ProductoComponent } from '../producto/producto.component';
 
 @Component({
   selector: 'app-img',
@@ -8,10 +9,16 @@ import { inventario } from '../interfaces/inventario.interface';
 })
 export class ImgComponent {
 
+  cantidad:number = 0
+
   inventarios: inventario[] = []
 
-  constructor(private inventarioservice: InventarioService) { 
+  //@ViewChild(ProductoComponent)acumular! : ProductoComponent
+
+  constructor(public inventarioservice: InventarioService) { 
     this.inventarios = this.inventarioservice.inventario
   }
+
+
 
 }
